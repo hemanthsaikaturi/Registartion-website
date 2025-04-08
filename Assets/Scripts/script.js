@@ -85,14 +85,14 @@ function createParticipantSections(numParticipants) {
                     <p id="p${i}w0" class="war">Enter valid Name</p>
                 </div>
                 <div class="col-sm-6">
-                    <div class="form__group field">
-                        <input type="text" class="form__field" placeholder="College Name"
-                             name="participant-${i}-college"
-                            id="p${i}f7" required="">
-                        <label for="p${i}f7" class="form__label">College Name</label>
-                    </div>
-                    <p id="p${i}w7" class="war">Enter valid College Name</p>
-                </div>
+<div class="form__group field">
+     <input type="text" class="form__field" placeholder="College Name"
+          name="participant-${i}-college"
+         id="p${i}f7" required="">
+     <label for="p${i}f7" class="form__label">College Name</label>
+ </div>
+ <p id="p${i}w7" class="war">Enter valid College Name</p>
+ </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
@@ -211,23 +211,7 @@ function createParticipantSections(numParticipants) {
                     </div>
                     <p id="p${i}w9" class="war">Enter valid membership id</p>
                 </div>
-                <div class="col-sm-4">
-                    <div class="form__group field">
-                        <div class="dropdown1 form__field">
-                            <div class="select">
-                                <span name="Interest" class="choice">Which session are you most excited about? </span>
-                                <i class="fa fa-chevron-down"></i>
-                            </div>
-                            <input id="p${i}f10" value="" type="hidden" name="Interest">
-                            <ul class="dropdown-menu1" style="z-index: 100">
-                                <li id="Graphic design">Graphic design</li>
-                                <li id="UI/UX Design">UI/UX Design</li>
-                                <li id="Both">Both</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <p id="p${i}w10" class="war">Select valid Section</p>
-                </div>
+
             </div>
         </div>
       `;
@@ -241,7 +225,7 @@ function createParticipantSections(numParticipants) {
         
         <div class="col-sm-12">
                     <div class="form__group fields que">
-                    <p>Rate your designing skills on a scale of 10.</p>
+                    <p> How would you rate your coding skills on a scale of 1 to 10?</p>
                         <div class="dropdown1 form__field">
                             <div class="select">
                                 <span name="Scale" class="choice">Scale</span>
@@ -268,7 +252,7 @@ function createParticipantSections(numParticipants) {
     <div class="row">
         <div class="col-sm-12">
             <div class="form__group fields que1">
-                <p>Why do you want to participate in DesignX 2.0?</p>
+                <p>Have you participated in any coding competitions before? If yes, share your experience.</p>
                 <input type="text" id="q2" class="form__field que1"
                     placeholder="Why do you want to participate in DesignX 2.0?" required="">
                 <!-- <label for="p2f6" class="form__label">How do you think this workshop will benefit
@@ -276,26 +260,27 @@ function createParticipantSections(numParticipants) {
             </div>
             <p id="q2w" class="war qw">Enter valid Answer</p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-                    <div class="form__group fields que">
-                    <p>Do you have any prior experience in graphic design or UI/UX?</p>
-                        <div class="dropdown1 form__field">
-                            <div class="select">
-                                <span name="Experience" class="choice">Experience</span>
-                                <i class="fa fa-chevron-down"></i>
-                            </div>
-                            <input id="q3" value="" type="hidden" name="Scale">
-                            <ul class="dropdown-menu1">
-                                <li id="Yes">Yes</li>
-                                <li id="No">No</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <p id="q3w" class="war qw">Select a valid number</p>
-                </div>
-    </div>
+            <div class="col-sm-12">
+            <div class="form__group fields que1">
+                <p>How familiar are you with pattern recognition or logic-based puzzles?</p>
+                <input type="text" id="q2" class="form__field que1"
+                    placeholder="Why do you want to participate in DesignX 2.0?" required="">
+                <!-- <label for="p2f6" class="form__label">How do you think this workshop will benefit
+                    your understanding of the image processing techniques?</label> -->
+            </div>
+            <p id="q2w" class="war qw">Enter valid Answer</p>
+        </div>
+         <div class="col-sm-12">
+            <div class="form__group fields que1">
+                <p>How do you usually approach a complex coding problem?</p>
+                <input type="text" id="q2" class="form__field que1"
+                    placeholder="Why do you want to participate in DesignX 2.0?" required="">
+                <!-- <label for="p2f6" class="form__label">How do you think this workshop will benefit
+                    your understanding of the image processing techniques?</label> -->
+            </div>
+            <p id="q2w" class="war qw">Enter valid Answer</p>
+        </div>
+    </div>  
 </div>
 </div>`;
     //Dropdown for others
@@ -334,23 +319,22 @@ function createParticipantSections(numParticipants) {
 }
 
 // createParticipantSections(1); // Original call with default value 1
-createParticipantSections(2); // Modified call with default value 2
+createParticipantSections(teamSize); // Modified call with default value 2
 
 const firebaseConfig = {
-    apiKey: config.API_KEY,
-    authDomain: config.AUTH_DOMAIN,
-    projectId: config.PROJECT_ID,
-    storageBucket: config.STORAGE_BUCKET,
-    messagingSenderId: config.MESSAGE_SENDER_ID,
-    appId: config.APP_ID,
-    measurementId: config.MESSUREMENT_ID,
+    apiKey: config.apiKey,
+    authDomain: config.authDomain,
+    projectId: config.projectId,
+    storageBucket: config.storageBucket,
+    messagingSenderId: config.messagingSenderId,
+    appId: config.appId,    
 };
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
-const teams = db.collection("RSMTeams");
-const mail = db.collection("RSMMails");
+const teams = db.collection("AlgoVedaTeams");
+const mail = db.collection("AlgoVedaMails");
 
 document.querySelector(".submit").addEventListener("click", async (e) => {
     submitButton.style.display = "none";
@@ -373,11 +357,11 @@ document.querySelector(".submit").addEventListener("click", async (e) => {
         7: "college",
         8: "Membership",
         9: "Membership ID",
-        10: "Interest",
+
     };
     var data = {};
-    for (let i = 1; i <= teamSize; i++) {
-        for (let j = 0; j <= 10; j++) {
+    for (let i = 2; i <= teamSize; i++) {
+        for (let j = 0; j <= 9; j++) {
             let values;
             document
                 .querySelector(`#p${i}w${j}`)
@@ -386,6 +370,7 @@ document.querySelector(".submit").addEventListener("click", async (e) => {
                 document
                     .querySelector(`#p${i}w${j}`)
                     .classList.add("war-active");
+
                 var flag = 1;
             }
             if (j == 3 || j == 4 || j == 5 || j == 7) {
@@ -427,7 +412,8 @@ document.querySelector(".submit").addEventListener("click", async (e) => {
             data[`p${i}${dict[j]}`] = values;
         }
     }
-    for (let x = 1; x <= 3; x++) {
+    // Removed check for q3 (coding competition experience)
+    for (let x = 1; x <= 2; x++) {  // Changed from x <= 3 to x <= 2
         let ans = document.querySelector(`#q${x}`).value;
         document.querySelector(`#q${x}w`).classList.remove("war-active");
         if (ans == "") {
@@ -582,3 +568,31 @@ document.querySelector(".submit").addEventListener("click", async (e) => {
 //                     <p id="q1w" class="war qw">Select a valid number</p>
 //                 </div>
 //     </div>
+
+// <div class="col-sm-4">
+// <div class="form__group field">
+//     <div class="dropdown1 form__field">
+//         <div class="select">
+//             <span name="Interest" class="choice">Which session are you most excited about? </span>
+//             <i class="fa fa-chevron-down"></i>
+//         </div>
+//         <input id="p${i}f10" value="" type="hidden" name="Interest">
+//         <ul class="dropdown-menu1" style="z-index: 100">
+//             <li id="Graphic design">Graphic design</li>
+//             <li id="UI/UX Design">UI/UX Design</li>
+//             <li id="Both">Both</li>
+//         </ul>
+//     </div>
+// </div>
+// <p id="p${i}w10" class="war">Select valid Section</p>
+// </div>
+
+// <div class="col-sm-6">
+// <div class="form__group field">
+//     <input type="text" class="form__field" placeholder="College Name"
+//          name="participant-${i}-college"
+//         id="p${i}f7" required="">
+//     <label for="p${i}f7" class="form__label">College Name</label>
+// </div>
+// <p id="p${i}w7" class="war">Enter valid College Name</p>
+// </div>

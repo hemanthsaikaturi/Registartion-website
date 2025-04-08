@@ -1,9 +1,8 @@
 const config = {
-  API_KEY: "AIzaSyABBdpf71xtQ-wza5-exhOQ3kcODQxxFis",
-  AUTH_DOMAIN: "codequest-7ac27.firebaseapp.com",
-  PROJECT_ID: "codequest-7ac27",
-  STORAGE_BUCKET: "codequest-7ac27.appspot.com",
-  MESSAGE_SENDER_ID: "344040899017",
-  APP_ID: "1:344040899017:web:a83aa934680f565a4c2818",
-  MESSUREMENT_ID: "G-KEHE7NSKM5"
+  apiKey: "AIzaSyCeoF_mBC-LZP6Co8nuYUWifp2aar3HpSo",
+  authDomain: "sb-projects-24-25.firebaseapp.com",
+  projectId: "sb-projects-24-25",
+  storageBucket: "sb-projects-24-25.firebasestorage.app",
+  messagingSenderId: "280817570535",
+  appId: "1:280817570535:web:e2638cc48daa0126d60842"
 };
